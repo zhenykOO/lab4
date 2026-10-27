@@ -1,0 +1,52 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Anime {
+    - title: String
+    - genres: List<String>
+    - rating: double
+    - episodesCount: int
+    - releaseDate: LocalDate
+    --
+    + Anime(title: String, genres: List<String>, rating: double, episodesCount: int, releaseDate: LocalDate)
+    + getTitle(): String
+    + getGenres(): List<String>
+    + getRating(): double
+    + getEpisodesCount(): int
+    + getReleaseDate(): LocalDate
+    + toString(): String
+}
+
+class AnimeSeries {
+    - studio: String
+    --
+    + AnimeSeries(title: String, genres: List<String>, rating: double, episodesCount: int, releaseDate: LocalDate, studio: String)
+    + getStudio(): String
+    + toString(): String
+}
+
+class ONA {
+    - platform: String
+    --
+    + ONA(title: String, genres: List<String>, rating: double, episodesCount: int, releaseDate: LocalDate, platform: String)
+    + getPlatform(): String
+    + toString(): String
+}
+
+class OVA {
+    - durationMinutes: int
+    --
+    + OVA(title: String, genres: List<String>, rating: double, episodesCount: int, releaseDate: LocalDate, durationMinutes: int)
+    + getDurationMinutes(): int
+    + toString(): String
+}
+
+class Main {
+    {static} + main(args: String[]): void
+}
+
+Anime <|-- AnimeSeries
+Anime <|-- ONA
+Anime <|-- OVA
+Main --> Anime : использует список
+@enduml
